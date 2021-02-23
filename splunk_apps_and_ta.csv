@@ -1,0 +1,72 @@
+Name,App/TA/SA/DA,ID,Version,Visible,Cloud Compatable,SH,IDM,ES,IXD
+3D Graph Network Topology Viz,Visual,4611,1.2.0,No,Yes,x,,,
+Bullet Graph,Visual,3144,1.4.0,No,Yes,x,,,
+Calendar Heat Map,Visual,3162,1.4.0,No,Yes,x,,,
+cefutils,TA,487,1.5.4,No,Yes,DONE,,DONE,x
+Palo Alto Networks,App,491,6.5.0,Yes,Yes,DONE,,x,
+CIM Validator,App,2968,1.6,Yes,No,,,x,
+Cloudflare Technology Add-on for Splunk,TA,5114,1.0.0,No,?,x,x,DONE,x
+Splunk Add-on for Microsoft Windows,TA,742,8.1.1,No,Yes,x,x,DONE,x
+PingFederate App for Splunk (new),App,976,2.0.0,Yes,Yes,x,,,x
+Splunk Supporting Add-on for Active Directory,TA,1151,3.0.2,Yes,Yes,,,,x
+Splunk Add-on for Cisco ASA,TA,1620,4.1.0,No,Yes,x,,DONE,x
+Splunk App for Windows Infrastructure,App,1680,2.0.2,Yes,Yes,x,,x,
+Event Timeline Viz,Visual,4370,1.5.0,No,Yes,x,,,
+Lookup Editor,App,1724,3.4.6,Yes,Yes,x,,DONE,
+ExtraHop App for Splunk,,,1.2.0,Yes,,,,,
+Highlighter,,,1.1.5,Yes,,,,,
+Horizon Chart,,,1.4.0,No,,,,,
+Host Auto-Contain for CrowdStrike,TA,5030,1.0.3,No,No,,,x,
+Splunk Add-on for AWS,TA,1876,5.0.3,Yes,Yes,x,x,DONE,x
+Splunk Add-on for Cisco Identity Services (new),TA,1915,4.0.0,No,Yes,x,,x,x
+Palo Alto Networks Add-on,TA,2757,6.5.0,No,Yes,x,,x,x
+Qualys Technology Add-on for Splunk,TA,2964,1.8.4,Yes,Yes,x,x,x,x
+Microsoft Office 365 Reporting Mail Add-on for Splunk,Ta,,1.2.4,Yes,,,,,
+Sankey Diagram,TA,3112,1.5.0,No,Yes,x,,DONE,
+MITRE ATT&CK Framework,App,4617,3.0.1,Yes,No,x,,x,
+Maps+ for Splunk,App,3124,3.1.5,No,Yes,x,,,
+CylancePROTECT App for Splunk,App,3233,1.5.6,Yes,Yes,,,,
+Netskope App For Splunk,App,3414,2.1.0,Yes,Yes,DONE,,x,
+TA-VirusTotalActions,TA,3446,0.2.0,No,Yes,x,,x,
+Parallel Coordinates,,,1.4.0,No,,,,,
+PCAP Analyzer for Splunk,,,4.2.2,No,,,,,
+Phantom Add-On,,,4.0.10,No,,,,,
+Varonis DatAlert App for Splunk,App,3553,2.3,Yes,Yes ,,,,x
+Proofpoint TAP SIEM Modular Input,TA,3681,1.3.140,No,Yes,x,x,DONE,x
+Proofpoint CASB Add-on for Splunk,TA,5366,1.0.6,No,No,x,x,x,x
+CylancePROTECT Add-on for Splunk Enterprise,TA,3709,1.5.6,No,Yes,x,x,x,x
+Punchcard,Visual,3129,1.4.0,No,Yes,x,,,
+Microsoft 365,App,3786,3.2.2,Yes,Yes,,,,
+Qualys VM App for Splunk Enterprise,,,1.0.4,Yes,,,,DONE,
+Qualys WAS App for Splunk Enterprise,,,1.0.2,Yes,,,,,
+SA-Investigator,SA,3749,2.3.0,Yes,Yes,,,DONE,
+NetSkope Add-on For Splunk,TA,3808,2.3.0,No,Yes,DONE,x,x,x
+SecKit,,,3.0.8Rbaf6f27,No,,,,,
+SecKit Geolocation with Maxmind,,,5.0.7,No,,,,,
+Semicircle Donut Viz,,,1.2.3,No,,,,,
+SOC & CSIRT - Search Tool,App,n/a,None,Yes,custom,,,,
+Splunk Add-on for Microsoft Office 365,TA,4055,2.0.3,No,Yes,x,x,DONE,x
+Splunk Cloud Gateway,App,4250,1.13.0,Yes,Yes,,,DONE,
+Splunk Add-on for FTP,,,5.3.1,No,,,,,
+Technology Add-on for Varonis DatAlert,TA,4256,1.2.0,No,Yes,x,support notified IDM is required; however  input will be through our syslog-ng server,x,x
+Check Point App for Splunk,App,4293,1.1.0,Yes,Yes,,,,
+Splunk Add-on for Nmap,,,5.3.1,No,,,,,
+Splunk Add-on for SolarWinds,,,1.1.0,No,,,,,
+Splunk Add-on for Unix and Linux,,,8.2.0,No,,,,,
+Proofpoint On Demand Email Security Add On,TA,4327,2.0.0,No,Yes,x,x,DONE,x
+Proofpoint On Demand Email Security App,App,4328,2.0.0,Yes,Yes,,,,
+Puppet Report Viewer (new),App / TA,4413,3.0.3,Yes,Yes,x,,x,x
+Cloudflare App for Splunk,App,4501,1.0.3,Yes,Yes,,,,
+Microsoft Graph Security Add-on for Splunk,TA,4564,1.2.1,No,Yes,,DONE,DONE,x
+Tenable Add-On for Splunk,,,4.0.1,No,,,,,
+ThreatConnect,App,3075,3.1.12,Yes,No,,,,
+Timeline,Visual,3120,1.5.0,No,Yes,x,,,
+URL Toolbox,,,1.8,No,,,,,
+Microsoft Teams messages publication addon,TA,4855,1.0.18,No,Yes,x,,x,
+VirusTotal Malware Lookup for Splunk,TA,4283,2.0.0,No,No,x,?,x,
+WebGL Globe,,,2.0.1,No,,,,,
+Webhook Alert Action,,,8.0.3,No,,,,,
+CrowdStrike Falcon Event Streams,TA,5082,2.0.6,No,Yes,,x,,x
+CrowdStrike Intel Indicators,TA,5083,2.0.7,No,Yes,,x,,x
+CrowdStrike Falcon,App,5094,2.0.3,Yes,Yes,,,,
+ExtraHop Add-On for Splunk,TA,,2.0.0,No,Yes,x,,x,x
