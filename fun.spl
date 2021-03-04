@@ -1,0 +1,9 @@
+`comment("fun severity")`
+| eval severity = case(
+    severity="Critical", "┻━┻︵ \(°□°)/ ︵ ┻━┻ ".severity,
+    severity="High", "(╯°□°)╯ ︵ ┻━┻ ".severity,
+    severity="Medium", "ಠ_ಠ ".severity,
+    severity="Low", "(っ◕‿◕)っ ".severity,
+    severity="Informational", "♥‿♥ ".severity,
+    true(), severity
+    )
