@@ -1,0 +1,4 @@
+
+###Report find all indexes to whitelist based on available tags
+index=* tag IN (authentication,alert,certificate,change,database,dlp,email,ids,attack,inventory,malware,attack,operations,network,resolution,dns,session,communicate,performance,report,vulnerabilities,update,status,web) 
+| stats values(index) as index by tag

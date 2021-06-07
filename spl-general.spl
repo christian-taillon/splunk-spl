@@ -1,0 +1,11 @@
+// make time human readable
+
+eval mytime=strftime(_time,"%Y-%m-%d %H:%M:%S")
+
+| eval firstTime=strftime(firstTime,"%Y-%m-%d %H:%M:%S")
+| eval lastTime=strftime(lastTime,"%Y-%m-%d %H:%M:%S")
+
+// csv foo
+| stats count by foo
+| mvcombine foo delim=","
+| nomv foo
