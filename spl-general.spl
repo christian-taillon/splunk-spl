@@ -1,11 +1,39 @@
-// make time human readable
+// get current user
+| rest /services/authentication/current-context splunk_server=loacal | fields realname | rename realname as analyst
 
+// lower case all fields
+| foreach "*" [eval <<FIELD>>=lower('<<FIELD>>') ] 
+
+// make time human readable
 eval mytime=strftime(_time,"%Y-%m-%d %H:%M:%S")
 
 | eval firstTime=strftime(firstTime,"%Y-%m-%d %H:%M:%S")
 | eval lastTime=strftime(lastTime,"%Y-%m-%d %H:%M:%S")
 
+// use of now
+| eval yesterday=relative_time(now(), "-1d@d")
+
 // csv foo
 | stats count by foo
 | mvcombine foo delim=","
 | nomv foo
+
+// expand multivalued field
+| stats count by foo
+| eval action = split(action,",")
+| mvexpand action
+
+// time search a lookup
+| inputlookup incident_review_lookup
+| addinfo
+| eval yesterday=relative_time(now(), "-1d@d")
+| where (time >= yesterday AND time <= info_max_time)
+
+
+// find hosts that haven not checked in in a specified amount of time.
+| stats latest(_time) as lastTime earliest(_time) as firstTime by hostnames
+    `comment("change the "-30d" to choose a date that we haven't seen assets check in by")`
+| eval recent = if(lastTime > relative_time(now(),"-30d"),1,0), realLatest = strftime(latest,"%c")
+| eval firstTime=strftime(firstTime,"%Y-%m-%d %H:%M:%S")
+| eval lastTime=strftime(lastTime,"%Y-%m-%d %H:%M:%S")
+| where recent=0

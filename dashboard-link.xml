@@ -1,0 +1,12 @@
+<panel>
+      <title>foo</title>
+      <html>
+            <div class="splunk-view splunk-single">
+          <a href="search?q=index=foo&amp;earliest=$earliest$&amp;latest=$latest$" target="searchbar" class="single-drilldown custom-drilldown">
+            <text class="single-result custom-single-result">
+              <h1>Header</h1>
+            </text>
+          </a>
+        </div>
+      </html>
+    </panel>
