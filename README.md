@@ -26,6 +26,23 @@
 | eval lastTime=strftime(lastTime,"%Y-%m-%d %H:%M:%S")
 ```
 
+**List All Available Indexes with Events**
+```
+| eventcount summarize=false index=*
+| search count!=0
+| dedup index
+| fields - server
+```
+
+**List All Available Sourcetypes in an Index**
+```
+| metadata type=sourcetypes index=foo
+| eval firstTime=strftime(firstTime,"%Y-%m-%d %H:%M:%S")
+| eval lastTime=strftime(lastTime,"%Y-%m-%d %H:%M:%S")
+| eval recentTime=strftime(recentTime,"%Y-%m-%d %H:%M:%S")
+```
+
+
 **lower case all fields**
 ```
 | foreach "*" [eval <<FIELD>>=lower('<<FIELD>>') ]
@@ -90,4 +107,12 @@ Incident Review is used as an example
 | eval firstTime=strftime(firstTime,"%Y-%m-%d %H:%M:%S")
 | eval lastTime=strftime(lastTime,"%Y-%m-%d %H:%M:%S")
 | where recent=0
+```
+
+**Join**
+```
+search | join type=inner
+| join type=left max=0 
+| join type=inner overwrite=false genre_id
+[| {​​​search}​​​​​​​​​​ | rename id as genre_id ]
 ```
