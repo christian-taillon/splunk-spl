@@ -24,5 +24,5 @@ headers = {
 # verify=False if invalid cert
 r = requests.post(url, params=params, headers=headers)
 
-# you should recieve '{"text":"No data","code":5}' if inputs are working 
+# you should recieve '{"text":"No data","code":5}' if inputs are working
 print(r.text)
