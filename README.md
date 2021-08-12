@@ -2,7 +2,7 @@
 
 **DNS Lookup**
 ```
-| lookup dnslookup clientip as dst OUTPUT clienthost as DST_RESOLVED
+| lookup dnslookup clientip as dest_ip OUTPUT clienthost as dest_host
 ```
 
 **Event Frequency**
