@@ -78,18 +78,36 @@ eval mytime=strftime(_time,"%Y-%m-%d %H:%M:%S")
 
 **Turn a field in an output into csv format**
 ```
-| stats count by foo
+| fields foo
 | mvcombine foo delim=","
 | nomv foo
 ```
 
 **expand multivalued field**
 ```
-|| fields foo
+| fields foo
 | mvcombine foo delim=","
 | nomv foo
 ```
 
+**Sankey Multistaged**
+2 staged <br>
+```
+| table src_ip dest_port dest_ip
+| appendpipe [stats count by src_ip dest_port | rename src_ip as source, dest_port as target]
+| appendpipe [stats count by dest_port dest_ip | rename dest_port as source, dest_ip as target]
+| search source=*
+| fields source target count
+```
+3 staged <br>
+```
+| table src_ip signature category dest_ip
+| appendpipe [stats count by src_ip signature | rename src_ip as source, signature as target]
+| appendpipe [stats count by signature category | rename signature as source, category as target]
+| appendpipe [stats count by category dest_ip | rename category as source, dest_ip as target]
+| search source=*
+| fields source target count
+```
 **Search time in a lookup** <br>
 Incident Review is used as an example
 ```
