@@ -4,6 +4,11 @@
 ```
 | lookup dnslookup clientip as dest_ip OUTPUT clienthost as dest_host
 ```
+**DNS Independent IP Resolution**
+```
+| inputlookup tHostInfo
+| search src_ip=$IPADDRESS$ OR src_host=$HOSTNAME$
+```
 
 **Event Frequency**
 ```
@@ -33,6 +38,13 @@
 | dedup index
 | fields - server
 ```
+**List All Available Non-Internal Indexes with Events**
+```
+| eventcount summarize=false index=*
+| search count!=0  NOT index IN (audit_summary, cim_modactions, endpoint_summary, lastchanceindex, notable, notable_summary, risk, summary, tc_app_logs, threat_activity)
+| dedup index
+| fields - server
+```
 
 **List All Available Sourcetypes in an Index**
 ```
@@ -43,35 +55,35 @@
 ```
 
 
-**lower case all fields**
+**Lower case all fields**
 ```
 | foreach "*" [eval <<FIELD>>=lower('<<FIELD>>') ]
 ```
 
-**make time human readable**
+**Make time human readable**
 ```
 eval mytime=strftime(_time,"%Y-%m-%d %H:%M:%S")
 ```
 
 
-**get current user context**
+**Get current user context**
 ```
 | rest /services/authentication/current-context splunk_server=loacal
 ```
 
 **Group By Octet** <br>
-2 Octets
+***2 Octets***
 ```
 | rex field=src_ip "(?<subnet>\d+\.\d+)+\.\d+\.\d+"
 | stats count by subnet
 ```
-3 Octets
+***3 Octets***
 ```
 | rex field=ip "(?<subnet>\d+\.\d+\.\d+)\.\d+"
 | stats count by subnet
 ```
 
-**use of now**
+**Use of now**
 ```
 | eval yesterday=relative_time(now(), "-1d@d")
 ```
@@ -83,15 +95,15 @@ eval mytime=strftime(_time,"%Y-%m-%d %H:%M:%S")
 | nomv foo
 ```
 
-**expand multivalued field**
+**Expand multivalued field**
 ```
 | fields foo
 | mvcombine foo delim=","
 | nomv foo
 ```
 
-**Sankey Multistaged**
-2 staged <br>
+**Sankey Multistaged** <br>
+***2 staged***
 ```
 | table src_ip dest_port dest_ip
 | appendpipe [stats count by src_ip dest_port | rename src_ip as source, dest_port as target]
@@ -99,7 +111,7 @@ eval mytime=strftime(_time,"%Y-%m-%d %H:%M:%S")
 | search source=*
 | fields source target count
 ```
-3 staged <br>
+***3 staged***
 ```
 | table src_ip signature category dest_ip
 | appendpipe [stats count by src_ip signature | rename src_ip as source, signature as target]
@@ -108,6 +120,7 @@ eval mytime=strftime(_time,"%Y-%m-%d %H:%M:%S")
 | search source=*
 | fields source target count
 ```
+
 **Search time in a lookup** <br>
 Incident Review is used as an example
 ```
