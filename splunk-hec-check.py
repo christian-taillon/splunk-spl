@@ -3,10 +3,12 @@ import requests
 ## define your varriables
 # channel is HEC token
 channel = "00000000-0000-0000-0000-0000000000"
+# company's hostname
+company = "$$COMPAN$$"
 # http or https
 protocol = "https"
 # cloud customers have `http-inputs-` before hostname
-host = http - inputs -$company$.splunkcloud.com
+host = "http-inputs-" + company + ".splunkcloud.com"
 # endpoint = collector or collector/raw
 endpoint = "/services/collector"
 
