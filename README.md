@@ -54,6 +54,12 @@
 | eval recentTime=strftime(recentTime,"%Y-%m-%d %H:%M:%S")
 ```
 
+**Better FieldSummary with Event Coverage**
+```
+index=pa_log sourcetype="pan:traffic" | fieldsummary
+| eventstats max(count) as total  
+| eval event_coverage = round(((count / total)*100),2)."%"
+```
 
 **Lower case all fields**
 ```
@@ -88,11 +94,17 @@ eval mytime=strftime(_time,"%Y-%m-%d %H:%M:%S")
 | eval yesterday=relative_time(now(), "-1d@d")
 ```
 
-**Turn a field in an output into csv format**
+**Turn a field into csv format**
 ```
-| fields foo
-| mvcombine foo delim=","
-| nomv foo
+| fields mv_foo
+| mvcombine mv_foo delim=","
+| nomv mv_foo
+```
+
+**Turn a field into csv format 2**
+```
+| fields mv_foo
+| eval mf_foo_csv = mvjoin(mv_foo,", ")
 ```
 
 **Expand multivalued field**
