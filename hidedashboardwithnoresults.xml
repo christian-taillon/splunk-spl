@@ -1,0 +1,15 @@
+<panel depends="$hide_panel$">
+      <chart>
+        <search>
+          <query>sourcetype=*</query>
+          <progress>
+            <condition match="'job.resultCount' == 0">
+              <unset token="hide_panel"></unset>
+            </condition>
+            <condition>
+              <set token="hide_panel">true</set>
+            </condition>
+          </progress>
+        </search>
+      </chart>
+    </panel>
