@@ -57,7 +57,7 @@
 **Better FieldSummary with Event Coverage**
 ```
 index=pa_log sourcetype="pan:traffic" | fieldsummary
-| eventstats max(count) as total  
+| eventstats max(count) as total
 | eval event_coverage = round(((count / total)*100),2)."%"
 ```
 
