@@ -3,12 +3,8 @@
 `sourcetype=DnsRequestV4* DomainName= <dns>`
 
 ## CrowdStrike search for meainingful User logins
-<<<<<<< HEAD
 ```
 index=main ComputerName=* sourcetype="UserLogonV8-v02"
-=======
-`index=main ComputerName=* sourcetype="UserLogonV8-v02"
->>>>>>> c39f75df29c379ba338a620669942c23a27c95cb
     NOT UserName IN ("DWM*","UMFD*")
     NOT LogonType_decimal IN (0,5)
 | eval logon_type = case(LogonType_decimal==2,"Interactive",
@@ -26,11 +22,7 @@ index=main ComputerName=* sourcetype="UserLogonV8-v02"
     1==1,"error")
 | eval IP4 = coalesce(RemoteAddressIP4, LocalAddressIP4)
 | table _time UserName logon_type IP4 ComputerName
-<<<<<<< HEAD
 ```
-=======
-`
->>>>>>> c39f75df29c379ba338a620669942c23a27c95cb
 
 ## Encoded PowerShell
 `event_simpleName=ProcessRollup2 FileName=powershell.exe CommandLine IN (*-enc*,*encoded*)`
@@ -49,7 +41,6 @@ index=main ComputerName=* sourcetype="UserLogonV8-v02"
 `event_simpleName="DnsRequest"
 | rename ContextProcessId as TargetProcessId
 | join TargetProcessId
-<<<<<<< HEAD
     [ search event_simpleName="ProcessRollup2" FileName IN (Atbroker.exe , Bash.exe , Bitsadmin.exe , Certutil.exe , Cmd.exe , Cmstp.exe , Control.exe , Cscript.exe , Csc.exe , Dfsvc.exe , Diskshadow.exe , Dnscmd.exe , Esentutl.exe , Eventvwr.exe , Expand.exe , Extexport.exe , Extrac32.exe , Findstr.exe , Forfiles.exe , Ftp.exe , Gpscript.exe , Hh.exe , Ie4uinit.exe , Ieexec.exe , Infdefaultinstall.exe , Installutil.exe , Jsc.exe , Makecab.exe , Mavinject.exe , Mmc.exe , Msconfig.exe , Msdt.exe , Mshta.exe , Msiexec.exe , Odbcconf.exe , Pcalua.exe , Pcwrun.exe , Presentationhost.exe , Print.exe , Regasm.exe , Regedit.exe , Register-cimprovider.exe , Regsvcs.exe , Regsvr32.exe , Reg.exe , Replace.exe , Rpcping.exe , Rundll32.exe , Runonce.exe , Runscripthelper.exe , Schtasks.exe , Scriptrunner.exe , Sc.exe , SyncAppvPublishingServer.exe , Verclsid.exe , Wab.exe , Wmic.exe , Wscript.exe , Wsreset.exe , Xwizard.exe) ]
 
 # Static Behavior Model
@@ -61,6 +52,3 @@ event_simpleName=ProcessRollup2
 | eval ProcessStartTime=strftime(ProcessStartTime,"%m/%d/%y %H:%M:%S")
 | table ProcessStartTime aid ComputerName UserName ImageFileName OriginalFilename SHA256HashData ParentBaseFileName
 ```
-=======
-    [ search event_simpleName="ProcessRollup2" FileName IN (Atbroker.exe , Bash.exe , Bitsadmin.exe , Certutil.exe , Cmd.exe , Cmstp.exe , Control.exe , Cscript.exe , Csc.exe , Dfsvc.exe , Diskshadow.exe , Dnscmd.exe , Esentutl.exe , Eventvwr.exe , Expand.exe , Extexport.exe , Extrac32.exe , Findstr.exe , Forfiles.exe , Ftp.exe , Gpscript.exe , Hh.exe , Ie4uinit.exe , Ieexec.exe , Infdefaultinstall.exe , Installutil.exe , Jsc.exe , Makecab.exe , Mavinject.exe , Mmc.exe , Msconfig.exe , Msdt.exe , Mshta.exe , Msiexec.exe , Odbcconf.exe , Pcalua.exe , Pcwrun.exe , Presentationhost.exe , Print.exe , Regasm.exe , Regedit.exe , Register-cimprovider.exe , Regsvcs.exe , Regsvr32.exe , Reg.exe , Replace.exe , Rpcping.exe , Rundll32.exe , Runonce.exe , Runscripthelper.exe , Schtasks.exe , Scriptrunner.exe , Sc.exe , SyncAppvPublishingServer.exe , Verclsid.exe , Wab.exe , Wmic.exe , Wscript.exe , Wsreset.exe , Xwizard.exe) ]`
->>>>>>> c39f75df29c379ba338a620669942c23a27c95cb
