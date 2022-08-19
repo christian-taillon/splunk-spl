@@ -159,3 +159,19 @@ search | join type=inner
 | join type=inner overwrite=false genre_id
 [| {​​​search}​​​​​​​​​​ | rename id as genre_id ]
 ```
+
+**CPE Extraction**
+```
+.... spl filtering
+| dedup agent_names
+| fields installed_software{} agent_names sourcetype
+| rename installed_software{} as installed_software
+| mvexpand installed_software
+| eval installed_software1 = split(installed_software,":")
+| eval vendor = mvindex(installed_software1,2)
+| eval product = mvindex(installed_software1,3)
+| eval version = mvindex(installed_software1,4)
+| eval service_pack = mvindex(installed_software1,5)
+| rename installed_software as cpe
+| table agent_names product vendor version service_pack cpe
+```
