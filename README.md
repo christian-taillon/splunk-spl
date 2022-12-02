@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Splunk Cheatsheet"
+permalink: /spl
+---
+
 ## Splunk Quick Cheat Sheet
 
 **DNS Lookup**
@@ -71,6 +77,15 @@ index=pa_log sourcetype="pan:traffic" | fieldsummary
 eval mytime=strftime(_time,"%Y-%m-%d %H:%M:%S")
 ```
 
+**Remove Domain from Device**
+```
+|rex field=dest "^(?<dest>.*?)[\.|$]"
+```
+
+**Normalize User Field from WinEventlog
+```
+| eval user=lower(if(match(user,".*\\\\.*"), replace(user,".*\\\\",""), user)),
+```
 
 **Get current user context**
 ```
